@@ -10,7 +10,7 @@ const PasswordInput = ( { setPassword } ) => {
       <label className="log-input-img" htmlFor="password-input">
         <img  src={passwordLogo} alt="*"/>
       </label>
-      <input id="password-input" className="log-input-field" type="password" onChange={(ev) => setPassword(ev.target.value)} placeholder="password"/>
+      <input id="password-input" className="log-input-field" type="password" onChange={(ev) => setPassword(ev.target.value)} placeholder="Password"/>
     </div>
   )
 

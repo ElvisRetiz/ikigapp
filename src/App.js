@@ -1,12 +1,14 @@
 import React from 'react';
-import Navbar from './components/navbar/index.js';
+
+import Layout from './components/layout/index.js';
 import Log from './views/log/index.js';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Log />
+      <Layout>
+        <Log />
+      </Layout>
     </div>
   );
 }

@@ -10,7 +10,7 @@ const UserInput = ( { setUser } ) => {
       <label className="log-input-img" htmlFor="user-input">
         <img  src={userLogo} alt="@"/>
       </label>
-      <input id="user-input" className="log-input-field" type="text" onChange={(ev) => setUser(ev.target.value)} placeholder="email"/>
+      <input id="user-input" className="log-input-field" type="text" onChange={(ev) => setUser(ev.target.value)} placeholder="Email"/>
     </div>
   )
 

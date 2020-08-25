@@ -8,14 +8,16 @@
   border-radius: 2.5px;
   border: solid 1px rgb(238, 238, 238);
   transition: 0.3s;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .log-input:hover{
-  border-color: orangered;
+  border-color: #ff8202;
 }
 
 .log-input:focus-within{
-  border: solid 1px orangered;
+  border: solid 1px #ff8202;
 }
 
 .log-input-img{
