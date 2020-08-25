@@ -1,0 +1,13 @@
+.log-container{
+  margin-top: 4rem;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.log-container-child {
+  width: 60%;
+  display: inherit;
+  flex-direction: column;
+}

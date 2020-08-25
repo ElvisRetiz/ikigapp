@@ -1,0 +1,39 @@
+.log-input{
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(238, 238, 238);
+  border-radius: 2.5px;
+  border: solid 1px rgb(238, 238, 238);
+  transition: 0.3s;
+}
+
+.log-input:hover{
+  border-color: orangered;
+}
+
+.log-input:focus-within{
+  border: solid 1px orangered;
+}
+
+.log-input-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 10%; 
+}
+
+.log-input-img img {
+  height: 1.5rem;
+}
+
+.log-input-field{
+  border: none;
+  background: none;
+  outline: none;
+  height: 100%;
+  width: 90%;
+}

@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import 'firebase/auth';
 import { useUser } from 'reactfire';
+import './main.css';
 
 import SignInButton from '../../components/buttons/auth/signin/index.js';
 import SignOutButton from '../../components/buttons/auth/signout/index.js';
 import SignUpButton from '../../components/buttons/auth/signup/index.js';
+import UserInput from '../../components/inuputs/user/index.js';
+import PasswordInput from '../../components/inuputs/password/index.js';
 
 const Log = () => {
   const [user, setUser] = useState("");
@@ -18,14 +21,12 @@ const Log = () => {
   };
 
   return (
-    <div className="log-conatiner"> 
+    <div className="log-container"> 
       {
         !firebaseUser &&
-        <div>
-          <p>Usuario:</p>
-          <input type="text" onChange={(ev) => setUser(ev.target.value)}/>
-          <p>Contraseña:</p>
-          <input type="password" onChange={(ev) => setPassword(ev.target.value)}/>
+        <div className="log-container-child">
+          <UserInput  setUser={setUser} />
+          <PasswordInput setPassword={setPassword} />
           <SignInButton user={user} password={password} />
           <SignUpButton user={user} password={password} />
         </div>
