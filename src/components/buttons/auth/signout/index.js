@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFirebaseApp } from 'reactfire';
 
+import './main.css'
+
 const SignOutButton = ({handleUser}) => {
 
   const firebase = useFirebaseApp();
@@ -11,8 +13,8 @@ const SignOutButton = ({handleUser}) => {
   }
 
   return (
-    <div>
-      <button onClick={handleSignOut}>Logout</button>
+    <div className="container-signout-button">
+      <button className="signout-button" onClick={handleSignOut}>Cerrar sesión</button>
     </div>
   )
 };

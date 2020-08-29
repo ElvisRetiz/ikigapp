@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'firebase/auth';
 import { useUser } from 'reactfire';
+import { Link } from "react-router-dom";
 
 import './main.css';
 import logoIkiga from '../../assets/images/LOGO IKG PNG.png'
@@ -32,6 +33,7 @@ const Log = () => {
           <UserInput  setUser={setUser} />
           <PasswordInput setPassword={setPassword} />
           <SignInButton user={user} password={password} />
+          <section>¿No tienes cuenta? <Link to="/register">Registrate aqui.</Link></section>
         </div>
       }
       {

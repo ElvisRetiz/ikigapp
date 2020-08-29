@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import 'firebase/auth';
 import { useUser } from 'reactfire';
+import { Link } from "react-router-dom";
 
-// import './main.css';
+import './main.css';
 import logoIkiga from '../../assets/images/LOGO IKG PNG.png'
 
 import SignOutButton from '../../components/buttons/auth/signout/index.js';
@@ -32,6 +33,7 @@ const Register = () => {
           <UserInput  setUser={setUser} />
           <PasswordInput setPassword={setPassword} />
           <SignUpButton user={user} password={password} />
+          <section>¿Ya tienes cuenta? <Link to="/login">Inicia sesion aqui.</Link></section>
         </div>
       }
       {

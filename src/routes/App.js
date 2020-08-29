@@ -1,13 +1,15 @@
 import React from 'react';
 import { useUser } from 'reactfire';
-// import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import {
   BrowserRouter,
   Switch,
   Route,
+  // eslint-disable-next-line no-unused-vars
   Link,
   Redirect,
+  // eslint-disable-next-line no-unused-vars
   useHistory,
+  // eslint-disable-next-line no-unused-vars
   useLocation
 } from "react-router-dom";
 
@@ -22,9 +24,8 @@ const App = () => (
     <Layout>
       <Switch>
         <PrivateRoute exact path="/" component={Home}/>
-        {/* <Route exact path="/" component={Home} /> */}
-        <Route exact path="/login" component={Log} />
-        <Route exact path="/register" component={Register} />
+        <SignedRoute exact path="/login" component={Log} />
+        <SignedRoute exact path="/register" component={Register} />
       </Switch>
     </Layout>
   </BrowserRouter>
@@ -113,25 +114,23 @@ export default App;
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
 function PrivateRoute({ component, ...rest }) {
-  
+
+  const Component = component;
   const user = useUser();
 
   return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        user ? (
-          component
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
+    <Route {...rest} render={({ location }) => user ? ( <Component /> ) : ( <Redirect to={{ pathname: "/login", state: { from: location } }} /> ) }/>
+  );
+
+}
+
+function SignedRoute({ component, ...rest }) {
+
+  const Component = component;
+  const user = useUser();
+
+  return (
+    <Route {...rest} render={({ location }) => user ? ( <Redirect to={{ pathname: "/", state: { from: location } }} /> ) : ( <Component /> ) }/>
   );
 
 }

@@ -13,9 +13,24 @@
 }
 
 .navbar-title{
+  display: flex;
   margin-left: 2rem;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-title a {
+  height: 100%;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-menu{
   margin-right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
 }

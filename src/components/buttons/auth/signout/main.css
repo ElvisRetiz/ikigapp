@@ -1,0 +1,16 @@
+.container-signout-button{
+  color: white;
+  height: 100%;
+}
+
+.signout-button{
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-weight: bold;
+}
+
+.signout-button:hover {
+  cursor: pointer;
+}
