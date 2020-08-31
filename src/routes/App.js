@@ -18,12 +18,14 @@ import Layout from '../components/layout/index.js';
 import Home from '../views/home/index.js';
 import Log from '../views/log/index.js';
 import Register from '../views/register/index.js';
+import ChallengeList from '../views/challenge/index.js';
 
 const App = () => (
   <BrowserRouter>
     <Layout>
       <Switch>
         <PrivateRoute exact path="/" component={Home}/>
+        <PrivateRoute exact path="/challenge/:id" component={ChallengeList}/>
         <SignedRoute exact path="/login" component={Log} />
         <SignedRoute exact path="/register" component={Register} />
       </Switch>
