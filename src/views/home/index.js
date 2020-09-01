@@ -46,7 +46,7 @@ const Home = () => {
           eventos.length !== 0 &&
             eventos.map(evento =>
               <div className="home-body-card" key={evento.id}>
-                <Link to={`/challenge/${evento.id}`}>
+                <Link to={`/event/${evento.id}`}>
                   <h4>{evento.nombre}</h4>
                   <p>{evento.descripcion}</p>
                   <div className="home-body-card-link">

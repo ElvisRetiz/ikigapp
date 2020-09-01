@@ -19,13 +19,15 @@ import Home from '../views/home/index.js';
 import Log from '../views/log/index.js';
 import Register from '../views/register/index.js';
 import ChallengeList from '../views/challenge/index.js';
+import PhotoView from '../views/photo/index.js';
 
 const App = () => (
   <BrowserRouter>
     <Layout>
       <Switch>
         <PrivateRoute exact path="/" component={Home}/>
-        <PrivateRoute exact path="/challenge/:id" component={ChallengeList}/>
+        <PrivateRoute exact path="/event/:id" component={ChallengeList}/>
+        <PrivateRoute exact path="/photo" component={PhotoView}/>
         <SignedRoute exact path="/login" component={Log} />
         <SignedRoute exact path="/register" component={Register} />
       </Switch>

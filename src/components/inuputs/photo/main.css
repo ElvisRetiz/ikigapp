@@ -1,0 +1,15 @@
+.challenge-body-card-link{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.camera-button{
+  display: none;
+}
+
+.camera-label-button{
+  background-color: #008d94;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+}
