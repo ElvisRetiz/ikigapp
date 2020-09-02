@@ -66,7 +66,7 @@ return (
                 </div>
                 <p>{reto.nombre}</p>
                 <p>{reto.descripcion}</p>
-                <CameraButton />
+                <CameraButton retoNombre={reto.nombre} />
               </div>
               :
               <div key={reto.id} className="challenge-body-card disable">

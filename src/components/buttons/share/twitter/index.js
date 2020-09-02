@@ -1,16 +1,19 @@
 import React from 'react';
 
-const TwitterShareButton = () => {
+import './main.css';
+import twLogo from '../../../../assets/images/twitter.png';
+
+const TwitterShareButton = ({element, hashtags}) => {
 
   return (
     <a  
-      href="https://twitter.com/intent/tweet?text=Es%20una%20prueba" 
-      className="twitter-share-button" 
-      data-show-count="false"
-      data-url="https://firebasestorage.googleapis.com/v0/b/ikigapp-1c61c.appspot.com/o/MeMySelfie%26Ikiga%2Fcerdo.png?alt=media&token=2c88cbc2-21e8-4319-af21-79f701343154"
-      data-hashtags="MeMySelfieAndIkiga"
+      className="share-button-tw"
+      href={`https://twitter.com/intent/tweet?text=IkigApp&url=${element}&hashtags=${hashtags}`} 
+      // data-url={element}
+      // data-hashtags= {hashtags}
     >
-      Tweet
+      <span>Compartir en</span>
+      <img src={twLogo} alt="Twitter" className="share-button-tw-logo"/>
     </a>
   )
 

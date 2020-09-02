@@ -1,6 +1,9 @@
 import React from 'react';
 
-const FacebookShareButton = () => {
+import './main.css';
+import fbLogo from '../../../../assets/images/facebook.png'
+
+const FacebookShareButton = ({element, hashtags}) => {
 
   const share = () => {
     if (!window.FB) {
@@ -9,16 +12,17 @@ const FacebookShareButton = () => {
 
     window.FB.ui({
       method: 'share',
-      href: 'https://firebasestorage.googleapis.com/v0/b/ikigapp-1c61c.appspot.com/o/MeMySelfie%26Ikiga%2Fcerdo.png?alt=media&token=2c88cbc2-21e8-4319-af21-79f701343154',
-      hashtag: '#MeMySelfieAndIkiga'
+      href: element,
+      hashtag: hashtags
     }, function(response){console.log(response);})
   }
 
   return (
-    <button onClick={share}>
-      <div>
-        Compartir en fb
-      </div>
+    <button onClick={share} className="share-button-fb">
+      <span>
+        Compartir en
+      </span>
+      <img src={fbLogo} alt="facebook" className="share-button-fb-logo"/>
     </button>
   )
 }

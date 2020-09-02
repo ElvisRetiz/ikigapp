@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import './main.css';
 
-const CameraButton = () => {
+const CameraButton = ({retoNombre}) => {
 
   const history = useHistory();
   const firebase = useFirebaseApp();
@@ -20,7 +20,7 @@ const CameraButton = () => {
       console.log(error);
     }, async () => {
       const downloadedURL = await task.snapshot.ref.getDownloadURL();
-      history.push('/photo',{photo: downloadedURL})
+      history.push('/photo',{photo: downloadedURL, retoNombre, eventoNombre: "MeMySelfieAndIkiga"})
     })
   };
 
