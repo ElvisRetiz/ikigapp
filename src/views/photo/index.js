@@ -7,12 +7,14 @@ import FacebookShareButton from '../../components/buttons/share/facebook/index.j
 import TwitterShareButton from '../../components/buttons/share/twitter/index.js';
 
 const PhotoView = () => {
+  
   const history = useHistory();
+
 return (
     <div className="photo-view-container">
       <h1>{history.location.state.retoNombre}</h1>
       <div className="photo-view-image-container">
-        <img src={history.location.state.photo} alt="photos" />
+        <img src={history.location.state.photo} alt="photos"/>
       </div>
       <div className="photo-view-hashtags">
         <p>#{history.location.state.eventoNombre}</p>

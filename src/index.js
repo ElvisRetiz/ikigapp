@@ -7,9 +7,11 @@ import {
   FirebaseAppProvider
 } from 'reactfire';
 
+import Spinner from './components/spinner/index.js';
+
 ReactDOM.render(
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-    <Suspense fallback={'Conectando la app...'}>
+    <Suspense fallback={<Spinner />}>
       <React.StrictMode>
         <App />
       </React.StrictMode>

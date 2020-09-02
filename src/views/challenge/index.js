@@ -5,12 +5,14 @@ import { useParams } from 'react-router-dom';
 
 import './main.css';
 
+import Spinner from '../../components/spinner/index.js';
 import CameraButton from '../../components/inuputs/photo/index.js';
 
 const ChallengeList = () => {
   const { id } = useParams();
   const [retos, setRetos] = useState([]);
-  const [evento, setEvento] = useState("")
+  const [evento, setEvento] = useState("");
+  const [cargando, setCargando] = useState(false);
   
   const firebase = useFirebaseApp();
   const retosRef = firebase.firestore().collection('retos').where('evento', '==', id).orderBy('orden');
@@ -42,6 +44,7 @@ const ChallengeList = () => {
           challenges.push(newDoc)
         })
         setRetos(challenges)
+        setCargando(true)
       })
       .catch(err => {
         console.log(err);
@@ -56,7 +59,7 @@ return (
     </div>
     <div className="challenge-body">
       {
-        retos.length !== 0 &&
+        cargando &&
           retos.map(reto =>
             reto.activo 
               ?
@@ -66,7 +69,7 @@ return (
                 </div>
                 <p>{reto.nombre}</p>
                 <p>{reto.descripcion}</p>
-                <CameraButton retoNombre={reto.nombre} />
+                <CameraButton retoNombre={reto.nombre} setCargando={setCargando}/>
               </div>
               :
               <div key={reto.id} className="challenge-body-card disable">
@@ -79,8 +82,8 @@ return (
         )
       }
       {
-        retos.length === 0 &&
-          <div>CARGANDO...</div>
+        !cargando &&
+          <Spinner />
       }
     </div>
   </div>

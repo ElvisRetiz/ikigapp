@@ -5,13 +5,14 @@ import { useHistory } from "react-router-dom";
 
 import './main.css';
 
-const CameraButton = ({retoNombre}) => {
+const CameraButton = ({retoNombre, setCargando}) => {
 
   const history = useHistory();
   const firebase = useFirebaseApp();
   const inputRef = React.createRef();
 
   const handleUpload = () => {
+    setCargando(false);
     const storageRef = firebase.storage().ref(`/MeMySelfie&Ikiga/${inputRef.current.files[0].name}`);
     const task = storageRef.put(inputRef.current.files[0]);
 
@@ -20,7 +21,7 @@ const CameraButton = ({retoNombre}) => {
       console.log(error);
     }, async () => {
       const downloadedURL = await task.snapshot.ref.getDownloadURL();
-      history.push('/photo',{photo: downloadedURL, retoNombre, eventoNombre: "MeMySelfieAndIkiga"})
+      history.push('/photo',{photo: downloadedURL, retoNombre, eventoNombre: "MeMySelfieAndIkiga"});
     })
   };
 

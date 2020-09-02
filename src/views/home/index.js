@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import './main.css';
 
+import Spinner from '../../components/spinner/index.js';
+
 const Home = () => {
   
   const [eventos, setEventos] = useState([]);
@@ -58,7 +60,7 @@ const Home = () => {
         }
         {
           eventos.length === 0 &&
-          <p>Cargando...</p>
+          <Spinner />
         }
       </div>
     </div>
