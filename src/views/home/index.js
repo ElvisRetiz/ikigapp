@@ -20,12 +20,10 @@ const Home = () => {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          console.log(doc.id, doc.data());
           let newDoc = {
             ...doc.data(),
             id: doc.id
           }
-          console.log(newDoc);
           documents.push(newDoc)
         })
         setEventos(documents)

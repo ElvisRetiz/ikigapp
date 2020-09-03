@@ -14,6 +14,9 @@ const ModalError = ({error, setError}) => {
     case "auth/wrong-password":
       message = "Password invalido, intente de nuevo.";
       break;
+    case "auth/weak-password":
+      message = "El password no cumple con el estandar de seguridad, intenta con uno mas largo."
+      break;
     default:
       message = "Hay un problema con el inicio de sesion. Intenta de nuevo mas tarde."
       break;

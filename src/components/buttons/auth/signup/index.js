@@ -7,16 +7,20 @@ import {
 
 import './main.css';
 
-const SignUpButton = ({user, password}) => {
+const SignUpButton = ({user, password, setError}) => {
 
   const firebase = useFirebaseApp();
   let history = useHistory();
   let location = useLocation();
 
   const handleSignUp = async () => {
-    await firebase.auth().createUserWithEmailAndPassword(user, password);
-    let { from } = location.state || { from: { pathname: "/" } };
-    history.replace(from);
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(user, password);
+      let { from } = location.state || { from: { pathname: "/" } };
+      history.replace(from);
+    } catch (error) {
+      setError(error);
+    }
   }
 
   return (
