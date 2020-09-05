@@ -1,23 +1,62 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import 'firebase/storage';
+import { useFirebaseApp } from 'reactfire';
 import ReactImageMosaic from 'react-image-mosaic';
 
 import './main.css';
 
+import Spinner from '../../components/spinner/index.js';
+
 import photoLogo from '../../assets/images/LOGO IKG PNG.png';
 
-// import Spinner from '../../components/spinner/index.js';
-
 const Collage = () => {
+
+  const [photos, setPhotos] = useState([]);
+
+  const firebase = useFirebaseApp();
+  const storageRef = firebase.storage().ref();
+  const listRef = storageRef.child('/MeMySelfie&Ikiga');
+
+  let photosList = [];
+
+  useEffect(() => {
+
+    const getLinksPhotos = async () => {
+
+      let res = await listRef.listAll();
+
+      for (let i = 0; i < res.items.length; i++) {
+        const link = await res.items[i].getDownloadURL();
+        photosList.push(link)
+      }
+
+      console.log("Photo List: ",photosList);
+      setPhotos(photosList);
+
+    };
+
+    getLinksPhotos();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  console.log(photos);
   return (
     <div>
-      <ReactImageMosaic 
-        width={ 400 }
-        height={ 400 }
-        colorBlending={0.5}
-        sources={[photoLogo,photoLogo,photoLogo]}
-        target={'https://firebasestorage.googleapis.com/v0/b/ikigapp-1c61c.appspot.com/o/MeMySelfie%26Ikiga%2FLOGO%20IKG%20PNG.png?alt=media&token=10f8a2cb-eaf1-47a9-ad47-e88768dc68e4'}
-      />
+      {
+        photos.length === 0 && 
+          <Spinner />
+      }
+      {
+        photos.length !== 0 &&
+          // photos.map((p, index) => <img key={index} src={p} alt="foto"/>)
+          <ReactImageMosaic 
+            width={ 400 }
+            height={ 400 }
+            colorBlending={0.6}
+            sources={photos}
+            target={photoLogo}
+          />
+      }
       <p>Vista Collage</p>
     </div>
   )

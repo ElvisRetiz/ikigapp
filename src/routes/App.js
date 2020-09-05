@@ -20,7 +20,7 @@ import Log from '../views/log/index.js';
 import Register from '../views/register/index.js';
 import ChallengeList from '../views/challenge/index.js';
 import PhotoView from '../views/photo/index.js';
-import Collage from '../views/collage/index.js';
+// import Collage from '../views/collage/index.js';
 
 const App = () => (
   <BrowserRouter>
@@ -29,7 +29,7 @@ const App = () => (
         <PrivateRoute exact path="/" component={Home}/>
         <PrivateRoute exact path="/event/:id" component={ChallengeList}/>
         <PrivateRoute exact path="/photo" component={PhotoView}/>
-        <PrivateRoute exact path="/collage" component={Collage}/>
+        {/* <PrivateRoute exact path="/collage" component={Collage}/> */}
         <SignedRoute exact path="/login" component={Log} />
         <SignedRoute exact path="/register" component={Register} />
       </Switch>
