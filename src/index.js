@@ -12,9 +12,9 @@ import Spinner from './components/spinner/index.js';
 ReactDOM.render(
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <Suspense fallback={<Spinner />}>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <App />
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </Suspense>
   </FirebaseAppProvider>,
   document.getElementById('root')

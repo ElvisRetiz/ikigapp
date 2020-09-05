@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'firebase/firestore';
-import { useFirebaseApp } from 'reactfire';
+import { useFirebaseApp, useUser } from 'reactfire';
 import { Link } from "react-router-dom";
 
 import './main.css';
@@ -10,6 +10,7 @@ import Spinner from '../../components/spinner/index.js';
 const Home = () => {
   
   const [eventos, setEventos] = useState([]);
+  const firebaseUser = useUser() || "";
   const firebase = useFirebaseApp();
   const eventsRef = firebase.firestore().collection('eventos');
 
@@ -41,6 +42,7 @@ const Home = () => {
         <p>La plataforma digital de la zona.</p>
       </div>
       <div className="home-body">
+        <p>Hola {firebaseUser.displayName}</p>
         <p>Selecciona el reto en el que deseas participar.</p>
         { 
           eventos.length !== 0 &&

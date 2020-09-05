@@ -7,10 +7,12 @@ import logoIkiga from '../../assets/images/LOGO IKG PNG.png'
 
 import ModalError from '../../components/modals/error/index.js';
 import SignUpButton from '../../components/buttons/auth/signup/index.js';
+import UserDataInput from '../../components/inuputs/data/index.js'
 import UserInput from '../../components/inuputs/user/index.js';
 import PasswordInput from '../../components/inuputs/password/index.js';
 
 const Register = () => {
+  const [dataUser, setDataUser] = useState("");
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -25,9 +27,10 @@ const Register = () => {
           error &&
             <ModalError error={error} setError={setError} />
         }
+        <UserDataInput setDataUser={setDataUser}/>
         <UserInput  setUser={setUser} />
         <PasswordInput setPassword={setPassword} />
-        <SignUpButton user={user} password={password} setError={setError}/>
+        <SignUpButton user={user} password={password} dataUser={dataUser} setError={setError}/>
         <section>¿Ya tienes cuenta? <Link to="/login">Inicia sesion aqui.</Link></section>
       </div>
     </div>

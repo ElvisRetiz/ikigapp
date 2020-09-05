@@ -8,8 +8,8 @@
   border-radius: 2.5px;
   border: solid 1px rgb(238, 238, 238);
   transition: 0.3s;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .log-input:hover{

@@ -7,7 +7,7 @@ import {
 
 import './main.css';
 
-const SignUpButton = ({user, password, setError}) => {
+const SignUpButton = ({user, password, dataUser, setError}) => {
 
   const firebase = useFirebaseApp();
   let history = useHistory();
@@ -16,6 +16,9 @@ const SignUpButton = ({user, password, setError}) => {
   const handleSignUp = async () => {
     try {
       await firebase.auth().createUserWithEmailAndPassword(user, password);
+      await firebase.auth().currentUser.updateProfile({
+        displayName: dataUser
+      });
       let { from } = location.state || { from: { pathname: "/" } };
       history.replace(from);
     } catch (error) {
