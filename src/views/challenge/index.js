@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'firebase/firestore';
-import { useFirebaseApp } from 'reactfire';
+import { useFirebaseApp, useUser } from 'reactfire';
 import { useParams } from 'react-router-dom';
 
 import './main.css';
@@ -11,14 +11,29 @@ import CameraButton from '../../components/inuputs/photo/index.js';
 const ChallengeList = () => {
   const { id } = useParams();
   const [retos, setRetos] = useState([]);
+  const [retosCumplidos, setRetosCumplidos] = useState([]);
   const [evento, setEvento] = useState("");
   const [cargando, setCargando] = useState(false);
   
   const firebase = useFirebaseApp();
+  const firebaseUser = useUser();
+  const usuarioRef = firebase.firestore().collection('usuarios').doc(firebaseUser.email || "");
   const retosRef = firebase.firestore().collection('retos').where('evento', '==', id).orderBy('orden');
   const eventoRef = firebase.firestore().collection('eventos').doc(id);
 
   const challenges = [];
+
+  useEffect(() => {
+    usuarioRef
+      .get()
+      .then(doc => {
+        setRetosCumplidos(doc.data().retos)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   useEffect(() => {
     eventoRef
@@ -49,8 +64,11 @@ const ChallengeList = () => {
       .catch(err => {
         console.log(err);
       })
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
+
+  console.log("retos cumplidos: ", retosCumplidos);
 
 return (
   <div className="challenge-container">
@@ -63,14 +81,24 @@ return (
           retos.map(reto =>
             reto.activo 
               ?
-              <div key={reto.id} className="challenge-body-card">
-                <div className="challenge-body-card-link">
-                  <small>{reto.fecha}</small>
+              retosCumplidos.includes(reto.id) 
+                ?
+                <div key={reto.id} className="challenge-body-card check">
+                  <div className="challenge-body-card-link">
+                    <small>{reto.fecha}</small>
+                  </div>
+                  <p>{reto.nombre}</p>
+                  <small>¡LO LOGRASTE, FELICIDADES!</small>
                 </div>
-                <p>{reto.nombre}</p>
-                <p>{reto.descripcion}</p>
-                <CameraButton retoNombre={reto.nombre} setCargando={setCargando}/>
-              </div>
+                :
+                <div key={reto.id} className="challenge-body-card">
+                  <div className="challenge-body-card-link">
+                    <small>{reto.fecha}</small>
+                  </div>
+                  <p>{reto.nombre}</p>
+                  <p>{reto.descripcion}</p>
+                  <CameraButton retoNombre={reto.nombre} setCargando={setCargando} retoID={reto.id}/>
+                </div>
               :
               <div key={reto.id} className="challenge-body-card disable">
                 <div className="challenge-body-card-link">

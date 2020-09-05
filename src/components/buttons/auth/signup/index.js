@@ -1,4 +1,5 @@
 import React from 'react';
+import 'firebase/firestore';
 import { useFirebaseApp } from 'reactfire';
 import {
   useHistory,
@@ -10,6 +11,7 @@ import './main.css';
 const SignUpButton = ({user, password, dataUser, setError}) => {
 
   const firebase = useFirebaseApp();
+  const usersRef = firebase.firestore().collection("usuarios");
   let history = useHistory();
   let location = useLocation();
 
@@ -19,6 +21,9 @@ const SignUpButton = ({user, password, dataUser, setError}) => {
       await firebase.auth().currentUser.updateProfile({
         displayName: dataUser
       });
+      await usersRef.doc(firebase.auth().currentUser.email).set({
+        retos: []
+      })
       let { from } = location.state || { from: { pathname: "/" } };
       history.replace(from);
     } catch (error) {

@@ -42,3 +42,8 @@
 .challenge-body-card a, p {
   margin: 0;
 }
+
+.check {
+  color: solid 1px #475e47;
+  background-color: #c5f8c1c0;
+}

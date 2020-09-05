@@ -1,18 +1,22 @@
 import React from 'react';
+import 'firebase/firestore';
 import 'firebase/storage';
-import { useFirebaseApp } from 'reactfire';
+import { useFirebaseApp, useUser, useFirestore } from 'reactfire';
 import { useHistory } from "react-router-dom";
 
 import './main.css';
 
-const CameraButton = ({retoNombre, setCargando}) => {
+const CameraButton = ({retoNombre, setCargando, retoID}) => {
 
   const history = useHistory();
   const firebase = useFirebaseApp();
+  const firestore = useFirestore();
+  const firebaseUser = useUser();
   const inputRef = React.createRef();
 
   const handleUpload = () => {
     setCargando(false);
+    const usuarioRef = firebase.firestore().collection('usuarios').doc(firebaseUser.email);
     const storageRef = firebase.storage().ref(`/MeMySelfie&Ikiga/${inputRef.current.files[0].name}`);
     const task = storageRef.put(inputRef.current.files[0]);
 
@@ -21,6 +25,9 @@ const CameraButton = ({retoNombre, setCargando}) => {
       console.log(error);
     }, async () => {
       const downloadedURL = await task.snapshot.ref.getDownloadURL();
+      await usuarioRef.update({
+        retos: firestore.FieldValue.arrayUnion(retoID)
+      })
       history.push('/photo',{photo: downloadedURL, retoNombre, eventoNombre: "MeMySelfieAndIkiga"});
     })
   };
