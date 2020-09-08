@@ -8,7 +8,7 @@ const TwitterShareButton = ({element, hashtags}) => {
   return (
     <a  
       className="share-button-tw"
-      href={`https://twitter.com/intent/tweet?text=IkigApp&url=${element}&hashtags=${hashtags}`} 
+      href={`https://twitter.com/intent/tweet?text=MeMySelfieAndIkiga&url=${element}&hashtags=${hashtags}`} 
       // data-url={element}
       // data-hashtags= {hashtags}
     >

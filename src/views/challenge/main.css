@@ -47,3 +47,7 @@
   color: solid 1px #475e47;
   background-color: #c5f8c1c0;
 }
+
+.challenge-body-share-buttons{
+  display: flex;
+}

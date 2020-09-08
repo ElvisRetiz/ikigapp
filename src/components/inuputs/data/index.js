@@ -10,7 +10,7 @@ const UserDataInput = ( { setDataUser } ) => {
       <label className="data-input-img" htmlFor="data-input">
         <img  src={userDataLogo} alt="user"/>
       </label>
-      <input id="data-input" className="data-input-field" type="text" onChange={(ev) => setDataUser(ev.target.value)} placeholder="Nombre y apellido"/>
+      <input id="data-input" className="data-input-field" type="text" onChange={(ev) => setDataUser(ev.target.value)} placeholder="¿Como te dicen en la zona?"/>
     </div>
   )
 

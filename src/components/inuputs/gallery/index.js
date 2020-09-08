@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 import './main.css';
 
-const CameraButton = ({retoNombre, setCargando, retoID}) => {
+const GalleryButton = ({retoNombre, setCargando, retoID}) => {
 
   const history = useHistory();
   const firebase = useFirebaseApp();
@@ -34,18 +34,17 @@ const CameraButton = ({retoNombre, setCargando, retoID}) => {
 
   return (
     <div className="challenge-body-card-link">
-      <label className="camera-label-button" htmlFor="btn-cam"><small>Tomar foto</small></label>
+      <label className="gallery-label-button" htmlFor="btn-gallery"><small>Subir foto</small></label>
       <input 
       ref={inputRef} 
-      id="btn-cam" 
+      id="btn-gallery" 
       type="file" 
       accept="image/*" 
-      capture="camera" 
-      className="camera-button" 
+      className="gallery-button" 
       onChange={handleUpload}
     />
     </div>
   )
 };
 
-export default CameraButton;
+export default GalleryButton;

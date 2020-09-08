@@ -28,7 +28,8 @@ const Log = () => {
           <UserInput  setUser={setUser} />
           <PasswordInput setPassword={setPassword} />
           <SignInButton user={user} password={password} setError={setError}/>
-          <section>¿No tienes cuenta? <Link to="/register">Registrate aqui.</Link></section>
+          <section><small>¿No tienes cuenta? <Link to="/register">Click aqui.</Link></small></section>
+          <section><small>¿Olvidaste el password? <Link to="/reset">Click aqui.</Link></small></section>
         </div>
     </div>
   )

@@ -7,6 +7,7 @@ import './main.css';
 
 import Spinner from '../../components/spinner/index.js';
 import CameraButton from '../../components/inuputs/photo/index.js';
+import GalleryButton from '../../components/inuputs/gallery/index.js';
 
 const ChallengeList = () => {
   const { id } = useParams();
@@ -97,7 +98,10 @@ return (
                   </div>
                   <p>{reto.nombre}</p>
                   <p>{reto.descripcion}</p>
-                  <CameraButton retoNombre={reto.nombre} setCargando={setCargando} retoID={reto.id}/>
+                  <div className="challenge-body-share-buttons">
+                    <CameraButton retoNombre={reto.nombre} setCargando={setCargando} retoID={reto.id}/>
+                    <GalleryButton retoNombre={reto.nombre} setCargando={setCargando} retoID={reto.id}/>
+                  </div>
                 </div>
               :
               <div key={reto.id} className="challenge-body-card disable">
