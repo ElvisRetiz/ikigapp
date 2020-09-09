@@ -7,6 +7,8 @@ const ModalError = ({error, setError}) => {
 
   let message = "";
 
+  console.log(error)
+
   switch (error.code) {
     case "auth/invalid-email":
       message = "Hay un error con el formato del correo, intente ingresandolo nuevamente.";
@@ -15,10 +17,13 @@ const ModalError = ({error, setError}) => {
       message = "Password invalido, intente de nuevo.";
       break;
     case "auth/weak-password":
-      message = "El password no cumple con el estandar de seguridad, intenta con uno mas largo."
+      message = "El password no cumple con el estandar de seguridad, intenta con uno mas largo.";
+      break;
+    case "auth/user-not-found":
+      message = "No se encontro una cuenta ligada al correo brindado.";
       break;
     default:
-      message = "Hay un problema con el inicio de sesion. Intenta de nuevo mas tarde."
+      message = "Hay un problema con el inicio de sesion. Intenta de nuevo mas tarde.";
       break;
   }
 

@@ -31,7 +31,7 @@ const Register = () => {
         <UserInput  setUser={setUser} />
         <PasswordInput setPassword={setPassword} />
         <SignUpButton user={user} password={password} dataUser={dataUser} setError={setError}/>
-        <section>¿Ya tienes cuenta? <Link to="/login">Inicia sesion aqui.</Link></section>
+        <small><section>¿Ya tienes cuenta? <Link to="/login">Inicia sesion aqui.</Link></section></small>
       </div>
     </div>
   )

@@ -18,6 +18,7 @@ import Layout from '../components/layout/index.js';
 import Home from '../views/home/index.js';
 import Log from '../views/log/index.js';
 import Register from '../views/register/index.js';
+import Reset from '../views/reset/index.js'
 import ChallengeList from '../views/challenge/index.js';
 import PhotoView from '../views/photo/index.js';
 // import Collage from '../views/collage/index.js';
@@ -32,6 +33,7 @@ const App = () => (
         {/* <PrivateRoute exact path="/collage" component={Collage}/> */}
         <SignedRoute exact path="/login" component={Log} />
         <SignedRoute exact path="/register" component={Register} />
+        <SignedRoute exact path="/reset" component={Reset} />
       </Switch>
     </Layout>
   </BrowserRouter>
