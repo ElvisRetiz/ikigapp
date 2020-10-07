@@ -8,7 +8,7 @@ import {
 
 import './main.css';
 
-const SignUpButton = ({user, password, dataUser, setError}) => {
+const SignUpButton = ({user, password, dataUser, dataExtraUser, setError}) => {
 
   const firebase = useFirebaseApp();
   const usersRef = firebase.firestore().collection("usuarios");
@@ -22,8 +22,9 @@ const SignUpButton = ({user, password, dataUser, setError}) => {
         displayName: dataUser
       });
       await usersRef.doc(firebase.auth().currentUser.email).set({
-        retos: []
-      })
+        retos: [],
+        grupoYCelula: dataExtraUser
+      });
       let { from } = location.state || { from: { pathname: "/" } };
       history.replace(from);
     } catch (error) {

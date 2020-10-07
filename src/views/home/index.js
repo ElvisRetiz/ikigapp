@@ -10,7 +10,7 @@ import Spinner from '../../components/spinner/index.js';
 const Home = () => {
   
   const [eventos, setEventos] = useState([]);
-  const firebaseUser = useUser() || "";
+  let firebaseUser = useUser() || "";
   const firebase = useFirebaseApp();
   const eventsRef = firebase.firestore().collection('eventos');
 
@@ -33,7 +33,7 @@ const Home = () => {
         console.log(err);
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  },[]);
 
   return (
     <div className="home-container">

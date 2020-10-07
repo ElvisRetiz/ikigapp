@@ -17,7 +17,7 @@ const ChallengeList = () => {
   const [cargando, setCargando] = useState(false);
   
   const firebase = useFirebaseApp();
-  const firebaseUser = useUser();
+  const firebaseUser = useUser() || { email: "" };
   const usuarioRef = firebase.firestore().collection('usuarios').doc(firebaseUser.email || "");
   const retosRef = firebase.firestore().collection('retos').where('evento', '==', id).orderBy('orden');
   const eventoRef = firebase.firestore().collection('eventos').doc(id);
@@ -67,9 +67,7 @@ const ChallengeList = () => {
       })
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
-
-  console.log("retos cumplidos: ", retosCumplidos);
+  },[]);
 
 return (
   <div className="challenge-container">
@@ -88,7 +86,7 @@ return (
                   <div className="challenge-body-card-link">
                     <small>{reto.fecha}</small>
                   </div>
-                  <p>{reto.nombre}</p>
+                  <p><strong>{reto.nombre}</strong></p>
                   <small>¡LO LOGRASTE, FELICIDADES!</small>
                 </div>
                 :
@@ -96,7 +94,7 @@ return (
                   <div className="challenge-body-card-link">
                     <small>{reto.fecha}</small>
                   </div>
-                  <p>{reto.nombre}</p>
+                  <p><strong>{reto.nombre}</strong></p>
                   <p>{reto.descripcion}</p>
                   <div className="challenge-body-share-buttons">
                     <CameraButton retoNombre={reto.nombre} setCargando={setCargando} retoID={reto.id}/>
@@ -108,7 +106,7 @@ return (
                 <div className="challenge-body-card-link">
                   <small>{reto.fecha}</small>
                 </div>
-                <p>{reto.nombre}</p>
+                <p><strong>{reto.nombre}</strong></p>
                 <p>{reto.descripcion}</p>
               </div>    
         )
