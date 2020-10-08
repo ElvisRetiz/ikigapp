@@ -107,7 +107,6 @@ return (
                   <small>{reto.fecha}</small>
                 </div>
                 <p><strong>{reto.nombre}</strong></p>
-                <p>{reto.descripcion}</p>
               </div>    
         )
       }
